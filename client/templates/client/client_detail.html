@@ -1,0 +1,27 @@
+{% extends 'client/base.html' %}
+{% block content %}
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-6-text-center">
+                <div class="card">
+                    <section class="headline">
+                        <h1 class="entry-title">
+                            {{ object.name }}
+                        </h1>
+                    </section>
+                    <div class="card-body">
+                        <p>
+                            {{ object.email }}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            {{ object.comment }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
