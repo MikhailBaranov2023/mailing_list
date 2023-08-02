@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from client.models import Client
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 
 
 class ClientListView(ListView):
