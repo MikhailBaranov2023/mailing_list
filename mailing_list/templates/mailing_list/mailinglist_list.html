@@ -33,14 +33,14 @@
                                 {% endif %}
                             </p>
                         </div>
-                        <div class="card-header">
+                        <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="{% url 'mailing_list:delete' object.pk %}" type="button"
                                        class="btn btn-sm btn-outline-danger">Delete</a>
                                 </div>
                             </div>
-
+                        </div>
                     </div>
                 </div>
             {% endfor %}
