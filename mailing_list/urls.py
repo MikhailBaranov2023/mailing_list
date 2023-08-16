@@ -9,5 +9,4 @@ urlpatterns = [
     path('', MailingListView.as_view(), name='list'),
     path('create/', MailingCreateView.as_view(), name='create'),
     path('delete/<int:pk>>', MailingDeleteView.as_view(), name='delete'),
-
 ]

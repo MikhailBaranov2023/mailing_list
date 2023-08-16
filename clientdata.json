@@ -1,0 +1,11 @@
+[
+  {
+    "model": "client.client",
+    "pk": 1,
+    "fields": {
+      "name": "Баранов Михаил Андреевич",
+      "email": "problemaprod@yandex.ru",
+      "comment": "Добрый день"
+    }
+  }
+]

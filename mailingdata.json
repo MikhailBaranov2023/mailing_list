@@ -1,0 +1,13 @@
+[
+  {
+    "model": "mailing_list.mailinglist",
+    "pk": 1,
+    "fields": {
+      "date": "2023-08-05T15:00:00Z",
+      "status": 2,
+      "periodicity": 2,
+      "title_message": null,
+      "body_message": null
+    }
+  }
+]

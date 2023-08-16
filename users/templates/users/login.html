@@ -1,0 +1,24 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+    <form method="post" class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Авторизируйтесь</h3>
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group-toggle">
+                        <button type="submit" class="btn btn-outline-success">Войти</button>
+                        <a href="{% url 'users:register' %}" class="btn btn-outline-primary">Создать аккаут</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
