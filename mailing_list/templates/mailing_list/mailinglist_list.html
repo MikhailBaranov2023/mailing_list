@@ -37,10 +37,14 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                {% if user.is_superuser %}
-                                    <a href="{% url 'mailing_list:delete' object.pk %}" type="button"
-                                       class="btn btn-sm btn-outline-danger">Delete</a>
-                                {% endif %}
+                                <div class="btn-group-toggle">
+                                    {% if user.is_superuser %}
+                                        <a href="{% url 'mailing_list:view' object.pk %}" type="button"
+                                           class="btn btn-sm btn-outline-primary">View</a>
+                                        <a href="{% url 'mailing_list:delete' object.pk %}" type="button"
+                                           class="btn btn-sm btn-outline-danger">Delete</a>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>

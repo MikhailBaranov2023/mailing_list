@@ -1,4 +1,5 @@
 from django.db import models
+from client.models import Client
 
 MAILING_STATUS = [(1, 'завершена'), (2, 'создана'), (3, 'запушена')]
 MAILING_PERIODICITY = [(1, 'раз в день'), (2, 'раз в неделю'), (3, 'раз в месяц')]
@@ -13,8 +14,10 @@ class MailingList(models.Model):
     title_message = models.CharField(max_length=200, verbose_name='тема письма', **NULLABLE)
     body_message = models.TextField(verbose_name='письмо', **NULLABLE)
 
+    clients = models.ManyToManyField(Client, verbose_name='клиенты')
+
     def __str__(self):
-        return f'Статус - {self.status}, периодичность - {self.periodicity}, время рассылки - {self.date}'
+        return f'Тема:{self.title_message}, Письмо: {self.body_message}'
 
     class Meta:
         verbose_name = 'рассылка'

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'client',
     'mailing_list',
     'users',
-    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mailing_list',
         'USER': 'postgres',
-        'PASSWORD': '12345'
+        'PASSWORD': 'problema99'
     }
 }
 

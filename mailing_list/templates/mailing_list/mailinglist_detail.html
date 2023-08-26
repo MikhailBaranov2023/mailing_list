@@ -1,0 +1,61 @@
+{% extends 'client/base.html' %}
+{% block content %}
+    <div class="col-12">
+        <div class="row">
+
+            <div class="col-6-text-center">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+
+                        <h4 class="my-0 font-weight-normal">
+                            {% if object.title_message %}
+                                {{ object.title_message }}
+                            {% else %}
+                                Тема письма не задана
+                            {% endif %}
+                        </h4>
+                        <hr>
+                        <h4 class="my-0 font-weight-normal">
+                            {% if object.body_message %}
+                                {{ object.body_message }}
+                            {% else %}
+                                Сообщение не задано.
+                            {% endif %}
+                        </h4>
+                        <hr>
+                        <h4 class="my-0 font-weight-normal">{{ object.date }}</h4>
+                        <hr>
+                        <h4 class="my-0 font-weight-normal">
+                            Статус рассылки :
+                            {% if object.status == 1 %}
+                                завершена
+                            {% elif object.status == 2 %}
+                                создана
+                            {% elif object.status == 3 %}
+                                запушена
+                            {% endif %}
+                        </h4>
+                        <hr>
+                        <h4 class="my-0 font-weight-normal">
+                            Периодичность :
+                            {% if object.periodicity == 1 %}
+                                раз в день
+                            {% elif object.periodicity == 2 %}
+                                раз в неделю
+                            {% elif object.periodicity == 3 %}
+                                раз в месяц
+                            {% endif %}
+                        </h4>
+                        <hr>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group-toggle">
+                        <a href="#" type="button" class="btn btn-sm btn-outline-info">Изменить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

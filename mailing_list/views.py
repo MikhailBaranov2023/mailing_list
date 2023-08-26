@@ -22,3 +22,8 @@ class MailingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class MailingDetailView(DetailView):
+    model = MailingList
+
