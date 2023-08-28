@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'mailing_list/base.html' %}
 {% block content %}
     <div class="col-12">
         <div class="row">
@@ -9,7 +9,7 @@
                             {% csrf_token %}
                             <p>Хотите удалить клиента "{{ object.name }}" ?</p>
                             <button type="submit" class="btn btn-danger">Подтвердить</button>
-                            <a href="{% url 'client:list' %}" class="btn btn-warning"> Отмена</a>
+                            <a href="{% url 'mailing_list:client_list' %}" class="btn btn-warning"> Отмена</a>
                         </form>
                     </div>
                 </div>

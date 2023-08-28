@@ -1,5 +1,5 @@
 from django import forms
-from mailing_list.models import MailingList
+from mailing_list.models import MailingList, Client
 
 
 class StyleFormMixin:
@@ -13,4 +13,10 @@ class StyleFormMixin:
 class FormMailingList(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = MailingList
+        fields = '__all__'
+
+
+class ClientForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Client
         fields = '__all__'

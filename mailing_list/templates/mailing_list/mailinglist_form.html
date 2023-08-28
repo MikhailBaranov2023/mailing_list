@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'mailing_list/base.html' %}
 {% block content %}
     <div class="col-12">
         <div class="row">
@@ -8,7 +8,11 @@
                         <form method="post">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <button type="submit" class="btn btn-primary">Добавить</button>
+                            {% if object %}
+                                <button type="submit" class="btn btn-primary">Изменить</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-primary">Добавить</button>
+                            {% endif %}
                             <a href="{% url 'mailing_list:list' %}" class="btn btn-warning"> Отмена</a>
                         </form>
                     </div>

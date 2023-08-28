@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'mailing_list/base.html' %}
 {% block content %}
     <div class="col-12">
         <div class="row">
@@ -23,7 +23,6 @@
                                 Сообщение не задано.
                             {% endif %}
                         </h4>
-                        <hr>
                         <h4 class="my-0 font-weight-normal">{{ object.date }}</h4>
                         <hr>
                         <h4 class="my-0 font-weight-normal">
@@ -51,11 +50,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="btn-group-toggle">
-                        <a href="#" type="button" class="btn btn-sm btn-outline-info">Изменить</a>
+                            <a href="{% url 'mailing_list:update' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-info">Изменить</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
