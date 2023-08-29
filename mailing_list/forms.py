@@ -1,5 +1,5 @@
 from django import forms
-from mailing_list.models import MailingList, Client
+from mailing_list.models import MailingSettings, Client, Message
 
 
 class StyleFormMixin:
@@ -10,9 +10,15 @@ class StyleFormMixin:
             field.widget.attrs['class'] = 'form-control'
 
 
-class FormMailingList(StyleFormMixin, forms.ModelForm):
+class MailingSettingsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
-        model = MailingList
+        model = MailingSettings
+        exclude = '__all__'
+
+
+class MessageForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Message
         fields = '__all__'
 
 
@@ -20,3 +26,9 @@ class ClientForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Client
         fields = '__all__'
+
+
+class MailingSettingsForManagerForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = MailingSettings
+        fields = ('status',)

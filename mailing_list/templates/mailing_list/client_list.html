@@ -18,17 +18,18 @@
                                 <p>
                                     {{ object.comment | truncatechars:100 }}
                                 </p>
+                                <hr>
+                                <p>
+
+                                    {{ object.owner }}
+                                </p>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group-toggle">
-                                        {% if perms.client.view_client %}
-                                            <a href="{% url 'mailing_list:client_view' object.pk %}"
-                                               class="btn btn-sm btn-outline-primary">View</a>
-                                        {% endif %}
                                         {% if perms.client.change_client %}
                                             <a href="{% url 'mailing_list:client_edit' object.pk %}" type="button"
-                                               class="btn btn-sm btn-outline-primary">Edit</a>
+                                               class="btn btn-sm btn-outline-success">Edit</a>
                                         {% endif %}
                                         {% if user.is_superuser %}
                                             <a href="{% url 'mailing_list:client_delete' object.pk %}" type="button"
