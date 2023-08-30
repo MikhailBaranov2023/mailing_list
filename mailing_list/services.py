@@ -6,7 +6,7 @@ from mailing_list.models import MailingSettings, MailingLog
 
 
 def _send_email(message_settings, message_client):
-    result_txt = ('Успешно')
+    result_txt = ('Усешно отправлена')
     try:
         result = send_mail(
             subject=message_settings.message.title_message,
@@ -15,8 +15,8 @@ def _send_email(message_settings, message_client):
             recipient_list=[message_client.client.email],
             fail_silently=False
         )
-    except SMTPException as fail:
-        result_txt = fail
+    except SMTPException:
+        result_txt = ('Ошибка отправки')
 
     MailingLog.objects.create(
         status=MailingLog.STATUS_OK if result else MailingLog.STATUS_FAILED,
@@ -29,7 +29,7 @@ def _send_email(message_settings, message_client):
 def send_mails():
     datetime_now = datetime.datetime.now(datetime.timezone.utc)
     for mailing_settings in MailingSettings.objects.filter(status=MailingSettings.STATUS_STARTED):
-        if (datetime_now > mailing_settings.start_time) and (datetime < mailing_settings.finish_time):
+        if (datetime_now > mailing_settings.start_time) and (datetime_now < mailing_settings.finish_time):
             for mailing_client in mailing_settings.mailingclient_set.all():
                 mailing_log = MailingLog.objects.filter(
                     client=mailing_client.client,

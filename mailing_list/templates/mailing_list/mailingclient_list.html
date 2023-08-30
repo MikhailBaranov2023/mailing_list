@@ -13,7 +13,6 @@
                     </div>
                     <div class="card-body">
                         {{ object.client.email }}
-                        {{ object.client.pk }}
                     </div>
                     <div class="card-footer">
                         <a href="{% url "mailing_list:mailing_client_toggle" mailing_pk object.client.pk %}"
