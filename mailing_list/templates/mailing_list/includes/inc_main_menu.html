@@ -7,6 +7,9 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'mailing_list:message_list' %}">Сообщения</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'mailing_list:mailing_logs' %}">Статус отправки</a>
         {% if user.is_authenticated %}
+            {% if user.is_staff %}
+                <a class="p-2 btn btn-outline-primary" href="{% url 'users:list' %}">Пользователи</a>
+            {% endif %}
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a>
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
         {% else %}

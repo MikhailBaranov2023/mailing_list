@@ -1,1 +1,42 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$9mB6t4A1sfGipePE2lALID$7v7e5ftEuThofHQkwKaZ5jFLj71l2rY71l5Kpw0EhbQ=", "last_login": "2023-08-28T11:44:54.600Z", "is_superuser": true, "first_name": "Admin", "last_name": "SkyPro", "is_staff": true, "is_active": true, "date_joined": "2023-08-28T11:09:59.833Z", "email": "admin@sky.pro", "phone": null, "telegram": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$600000$ANKqmNE97xO49jt26nY7Im$no3uhG00xrqHPBOQNSYxy+BFCssGkLtAWAwIbfnmctE=", "last_login": "2023-08-28T11:43:51.276Z", "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2023-08-28T11:39:39.686Z", "email": "problemaprod@yandex.ru", "phone": null, "telegram": null, "avatar": "", "groups": [], "user_permissions": []}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$9mB6t4A1sfGipePE2lALID$7v7e5ftEuThofHQkwKaZ5jFLj71l2rY71l5Kpw0EhbQ=",
+      "last_login": "2023-08-28T11:44:54.600Z",
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-28T11:09:59.833Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$ANKqmNE97xO49jt26nY7Im$no3uhG00xrqHPBOQNSYxy+BFCssGkLtAWAwIbfnmctE=",
+      "last_login": "2023-08-28T11:43:51.276Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-28T11:39:39.686Z",
+      "email": "problemaprod@yandex.ru",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

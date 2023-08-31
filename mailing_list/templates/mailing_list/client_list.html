@@ -2,9 +2,7 @@
 {% block content %}
     <div class="container">
         <div class="col-12 mb-5">
-            {% if perms.client.add_client %}
-                <a class='btn btn-outline-primary' href="{% url 'mailing_list:client_create' %}">Добавить клиента</a>
-            {% endif %}
+            <a class='btn btn-outline-primary' href="{% url 'mailing_list:client_create' %}">Добавить клиента</a>
         </div>
         <div class="row text-center">
             {% for object in object_list %}
@@ -18,23 +16,19 @@
                                 <p>
                                     {{ object.comment | truncatechars:100 }}
                                 </p>
-                                <hr>
-                                <p>
-
+                                {% if user.is_staff %}
+                                    <hr>
                                     {{ object.owner }}
-                                </p>
+                                {% endif %}
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between align-items-center">
+
                                     <div class="btn-group-toggle">
-                                        {% if perms.client.change_client %}
-                                            <a href="{% url 'mailing_list:client_edit' object.pk %}" type="button"
-                                               class="btn btn-sm btn-outline-success">Edit</a>
-                                        {% endif %}
-                                        {% if user.is_superuser %}
-                                            <a href="{% url 'mailing_list:client_delete' object.pk %}" type="button"
-                                               class="btn btn-sm btn-outline-danger">Delete</a>
-                                        {% endif %}
+                                        <a href="{% url 'mailing_list:client_edit' object.pk %}" type="button"
+                                           class="btn btn-sm btn-outline-success">Edit</a>
+                                        <a href="{% url 'mailing_list:client_delete' object.pk %}" type="button"
+                                           class="btn btn-sm btn-outline-danger">Delete</a>
                                     </div>
                                 </div>
                             </div>

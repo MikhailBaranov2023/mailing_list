@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
@@ -27,7 +27,7 @@ class ClientListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        if self.request.user.has_perm('mailing.view_client'):
+        if self.request.user.is_staff:
             return queryset
         return queryset.filter(owner=self.request.user)
 
@@ -78,7 +78,7 @@ class MailingSettingsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         """Пользователь видит только свои рассылки"""
         queryset = super().get_queryset()
-        if self.request.user.has_perm('mailing.view_mailingsettings'):
+        if self.request.user.is_staff:
             return queryset  # Если есть право доступа, то пользователь видит все рассылки
         return queryset.filter(owner=self.request.user)
 
@@ -99,9 +99,21 @@ class MailingSettingsCreateView(LoginRequiredMixin, CreateView):
 
 class MailingSettingsUpdateView(LoginRequiredMixin, UpdateView):
     model = MailingSettings
-    form_class = MailingSettingsForm
     template_name = 'mailing_list/mailinglist_form.html'
     success_url = reverse_lazy('mailing_list:mailing_list')
+
+    def get_form_class(self):
+        user = self.request.user
+        mailing = self.object
+        if mailing.owner == user or user.is_superuser:
+            self.form_class = MailingSettingsForm
+            return self.form_class
+        elif mailing.owner == user and user.is_staff:
+            self.form_class = MailingSettingsForm
+            return self.form_class
+        else:
+            self.form_class = MailingSettingsForManagerForm
+            return self.form_class
 
 
 class MailingSettingsDeleteView(LoginRequiredMixin, DeleteView):
@@ -171,9 +183,10 @@ class MessageDeleteView(LoginRequiredMixin, DeleteView):
         return self.object
 
 
-class MailingClintListView(ListView):
+class MailingClintListView(PermissionRequiredMixin, ListView):
     model = MailingClient
     template_name = 'mailing_list/mailingclient_list.html'
+    permission_required = 'mailing_list.view_mailingclient'
 
     def get_queryset(self):
         queryset = super().get_queryset()

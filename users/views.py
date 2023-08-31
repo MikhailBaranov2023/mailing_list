@@ -2,11 +2,11 @@ import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from users.models import User
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 from django.urls import reverse_lazy, reverse
 from users.forms import UserRegisterForm, UserProfileForm
 from users.services import verification
@@ -53,3 +53,19 @@ def generate_new_password(request):
     request.user.set_password(new_password)
     request.user.save()
     return redirect(reverse('users:login'))
+
+
+class UsersListView(LoginRequiredMixin, ListView):
+    model = User
+
+
+def toggle_activity(request, pk):
+    user_item = get_object_or_404(User, pk=pk)
+    if user_item.is_active:
+        user_item.is_active = False
+    else:
+        user_item.is_active = True
+
+    user_item.save()
+
+    return redirect(reverse('users:list'))

@@ -15,8 +15,10 @@
                         {{ object.client.email }}
                     </div>
                     <div class="card-footer">
-                        <a href="{% url "mailing_list:mailing_client_toggle" mailing_pk object.client.pk %}"
-                           class="btn btn-outline-dark">Удалить</a>
+                        {% if object.client.owner == user %}
+                            <a href="{% url "mailing_list:mailing_client_toggle" mailing_pk object.client.pk %}"
+                               class="btn btn-outline-dark">Удалить</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -29,18 +31,19 @@
             </div>
             <table class="table">
                 <tr>
-                    <th>Фамилия</th>
-                    <th>Имя</th>
+                    <th>Клиент</th>
                     <th>Email</th>
                     <th>Добавить</th>
                 </tr>
                 {% for client in clients %}
                     <tr>
-                        <td>{{ client.last_name }}</td>
-                        <td>{{ client.first_name }}</td>
+                        <td>{{ client.name }}</td>
                         <td>{{ client.email }}</td>
-                        <td><a href="{% url "mailing_list:mailing_client_toggle" mailing_pk client.pk %}"
-                               class="btn btn-outline-primary">Добавить</a></td>
+                        {% if client.owner == user %}
+                            <td><a href="{% url "mailing_list:mailing_client_toggle" mailing_pk client.pk %}"
+                                   class="btn btn-outline-primary">Добавить</a></td>
+                        {% endif %}
+
                     </tr>
                 {% endfor %}
             </table>

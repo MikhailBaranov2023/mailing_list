@@ -13,7 +13,7 @@ class StyleFormMixin:
 class MailingSettingsForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = MailingSettings
-        exclude = '__all__'
+        fields = '__all__'
 
 
 class MessageForm(StyleFormMixin, forms.ModelForm):
