@@ -60,12 +60,12 @@ class UsersListView(LoginRequiredMixin, ListView):
 
 
 def toggle_activity(request, pk):
-    user_item = get_object_or_404(User, pk=pk)
-    if user_item.is_active:
-        user_item.is_active = False
+    user = get_object_or_404(User, pk=pk)
+    if user.is_active:
+        user.is_active = False
     else:
-        user_item.is_active = True
+        user.is_active = True
 
-    user_item.save()
+    user.save()
 
     return redirect(reverse('users:list'))

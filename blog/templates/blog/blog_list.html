@@ -1,0 +1,50 @@
+{% extends 'mailing_list/base.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="container">
+        <div class="col-12 mb-5">
+            <a class='btn btn-outline-primary' href="{% url 'blog:create' %}">Добавить материал</a>
+        </div>
+        <div class="row text-center">
+            {% for object in object_list %}
+                <div class="col-5">
+                    <div class="card mb-3 box-shadow">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="my-0 font-weight-normal">{{ object.title }}</h3>
+                                <img class="card-img-top"
+                                     src="{{ object.image| mymedia }}"
+                                     alt="Card image cap">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                {{ object.body | truncatechars:100 }}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            {% if object.articles is None %}
+                            {% else %}
+                                <p>Ссылки: {{ object.articles }}</p>
+                            {% endif %}
+                            <p>Дата публикации: {{ object.data }}</p>
+                            <p>Просмотры: {{ object.view_count }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group-toggle">
+                                <a href="{% url 'blog:view' object.slug %}"
+                                   class="btn btn-sm btn-outline-primary">View</a>
+                                {% if perms.blog.change_blog %}
+                                    <a href="{% url 'blog:edit' object.slug %}" type="button"
+                                       class="btn btn-sm btn-outline-primary">Edit</a>
+                                    <a href="{% url 'blog:delete' object.slug %}" type="button"
+                                       class="btn btn-sm btn-outline-danger">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

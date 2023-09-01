@@ -15,17 +15,12 @@
                                 <p class="my-0 font-weight-normal">{{ object.telegram }}</p>
                             </div>
                             <div class="card-footer">
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="btn-group-toggle">
-                                        {% if object.is_active %}
-                                            <a href="{% url 'users:toggle_activity' object.pk %}"
-                                               class="btn btn-outline-danger">Заблокировать</a>
-                                        {% else %}
-                                            <a href="{% url 'users:toggle_activity' object.pk %}"
-                                               class="btn btn-outline-warning">Разблокировать</a>
-                                        {% endif %}
-                                    </div>
+                                <div class="btn-group-toggle">
+                                    {% if object.is_active %}
+                                        <a class="btn btn-warning" href="{% url 'users:toggle_activity' object.pk %}">Заблокировать</a>
+                                    {% else %}
+                                        <a class="btn btn-success" href="{% url 'users:toggle_activity' object.pk %}">Активировать</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

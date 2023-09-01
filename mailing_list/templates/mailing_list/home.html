@@ -1,19 +1,35 @@
 {% extends 'mailing_list/base.html' %}
+{% load my_tags %}
 {% block content %}
 
-<div class="col-12">
-    <div class="card mb-5 bg-transparent" style="margin-top: 50px">
-        <div class="card-header">
-            <h1>Cервис рассылок</h1>
-        </div>
-        <div class="card-body">
-            <p>Всего рассылок : {{ count_mailing }}</p>
-            <p>Активных рассылок всего : {{ count_mailing_active }}</p>
-            <p>Количество уникальных клиентов для рассылок : {{ count_unique_customers }}</p>
+    <div class="col-12">
+        <div class="card mb-5 bg-transparent" style="margin-top: 50px">
+            <div class="card-header">
+                <h1>Cервис рассылок</h1>
+            </div>
+            <div class="card-body">
+                <p>Всего рассылок : {{ count_mailing }}</p>
+                <p>Активных рассылок всего : {{ count_mailing_active }}</p>
+                <p>Количество уникальных клиентов для рассылок : {{ count_unique_customers }}</p>
+            </div>
         </div>
     </div>
-</div>
-<div class="row mt-3">
-</div>
-
+    <div class="row mt-3">
+        {% for object in blog %}
+            <div class="col-4">
+                <div class="card mb-3 box-shadow">
+                    <div class="card-header">
+                        <h5> {{ object.title }}</h5>
+                        <img src="{{ object.image|mymedia }}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <p>{{ object.body|truncatechars:100 }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'blog:view' object.slug %}" class="btn btn-outline-primary border-1">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div>
 {% endblock %}

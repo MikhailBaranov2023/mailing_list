@@ -1,11 +1,30 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, UpdateView, DeleteView, CreateView
-
+from blog.models import Blog
 from mailing_list.models import MailingSettings, Client, Message, MailingClient, MailingLog
 from mailing_list.forms import MessageForm, MailingSettingsForm, ClientForm, MailingSettingsForManagerForm
+
+
+class ContactsTemplateView(TemplateView):
+    template_name = 'mailing_list/contacts.html'
+    extra_context = {
+        'title': 'Контакты'
+    }
+
+    def post(self,*args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        if self.request.method == "POST":
+            name = self.request.POST.get('name')
+            email = self.request.POST.get('email')
+            message = self.request.POST.get('message')
+            print(f'New message from {name}, {email}: {message}')
+        return super().get_context_data(**kwargs)
 
 
 class HomeView(TemplateView):
@@ -18,6 +37,7 @@ class HomeView(TemplateView):
             status=3).count()
         context_data['count_unique_customers'] = Client.objects.distinct().count()
         context_data['title'] = 'Главная страница рассылок'
+        context_data['blog'] = Blog.objects.all()[:3]
         return context_data
 
 
