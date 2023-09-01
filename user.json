@@ -1,0 +1,71 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$9mB6t4A1sfGipePE2lALID$7v7e5ftEuThofHQkwKaZ5jFLj71l2rY71l5Kpw0EhbQ=",
+      "last_login": "2023-09-01T19:58:09.492Z",
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-28T11:09:59.833Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$ANKqmNE97xO49jt26nY7Im$no3uhG00xrqHPBOQNSYxy+BFCssGkLtAWAwIbfnmctE=",
+      "last_login": "2023-09-01T20:00:42.981Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-28T11:39:39Z",
+      "email": "problemaprod@yandex.ru",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$1vGUuDht8dUeWNsbfYYay6$KzkvyeDJ/GY25+dRc0rge57Fx5CcCDvEwN/QGGhC5io=",
+      "last_login": "2023-09-01T20:00:54.578Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-30T11:34:02Z",
+      "email": "sofitneska@yandex.ru",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "groups": [
+        2
+      ],
+      "user_permissions": [
+        45,
+        46,
+        47,
+        48
+      ]
+    }
+  }
+]

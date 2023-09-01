@@ -1,0 +1,53 @@
+{% extends "mailing_list/base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12 mb-5">
+                <p align="center"> Клиенты рассылки</p>
+            </div>
+            {% for object in object_list %}
+                <div class="card bg-transparent">
+                    <div class="card-header">
+                        {{ object.client.name }}
+                    </div>
+                    <div class="card-body">
+                        {{ object.client.email }}
+                    </div>
+                    <div class="card-footer">
+                        {% if object.client.owner == user %}
+                            <a href="{% url "mailing_list:mailing_client_toggle" mailing_pk object.client.pk %}"
+                               class="btn btn-outline-dark">Удалить</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="col-6">
+            <div class="col-12 mb-5">
+                <p align="center"> Клиенты для добавления </p>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Клиент</th>
+                    <th>Email</th>
+                    <th>Добавить</th>
+                </tr>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.email }}</td>
+                        {% if client.owner == user %}
+                            <td><a href="{% url "mailing_list:mailing_client_toggle" mailing_pk client.pk %}"
+                                   class="btn btn-outline-primary">Добавить</a></td>
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

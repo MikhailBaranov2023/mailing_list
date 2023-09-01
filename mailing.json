@@ -1,0 +1,190 @@
+[
+  {
+    "model": "mailing_list.client",
+    "pk": 1,
+    "fields": {
+      "name": "Баранов Михаил Андреевич",
+      "email": "problemaprod@yandex.ru",
+      "comment": "любит скидки",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.client",
+    "pk": 2,
+    "fields": {
+      "name": "Петров Петр Алексеевич",
+      "email": "petrovA@test.ru",
+      "comment": "не любит скидки",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.client",
+    "pk": 3,
+    "fields": {
+      "name": "Баранов Михаил Васильевич",
+      "email": "mikhailbaranov2023@yandex.ru",
+      "comment": "не навидит рассылки",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.client",
+    "pk": 5,
+    "fields": {
+      "name": "Крайнова Софья",
+      "email": "sofitneska@yandex.ru",
+      "comment": "afbsf",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.client",
+    "pk": 6,
+    "fields": {
+      "name": "Иванов Иван",
+      "email": "ivan@ivan.ru",
+      "comment": "",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.message",
+    "pk": 1,
+    "fields": {
+      "title_message": "SALE 50%",
+      "body_message": "Успей купить телевизор со скидкой 50%",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.message",
+    "pk": 2,
+    "fields": {
+      "title_message": "Распродажа бытовой техники",
+      "body_message": "Успей купить посудомоечную машину и холодильник со скидкой 25%.",
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.mailingsettings",
+    "pk": 1,
+    "fields": {
+      "start_time": "2023-08-28T23:39:19Z",
+      "finish_time": "2023-09-28T23:39:19Z",
+      "status": "started",
+      "periodicity": "daily",
+      "message": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.mailingsettings",
+    "pk": 2,
+    "fields": {
+      "start_time": "2023-08-28T23:39:19Z",
+      "finish_time": "2023-09-04T23:39:19Z",
+      "status": "created",
+      "periodicity": "weekly",
+      "message": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.mailingsettings",
+    "pk": 3,
+    "fields": {
+      "start_time": "2023-08-28T23:39:19Z",
+      "finish_time": "2023-11-28T23:39:19Z",
+      "status": "started",
+      "periodicity": "daily",
+      "message": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "mailing_list.mailingsettings",
+    "pk": 4,
+    "fields": {
+      "start_time": "2023-08-31T10:50:08Z",
+      "finish_time": "2023-09-07T10:50:08Z",
+      "status": "created",
+      "periodicity": "daily",
+      "message": 2,
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailing_list.mailinglog",
+    "pk": 1,
+    "fields": {
+      "last_attempt": "2023-08-30T10:52:02.572Z",
+      "status": "ok",
+      "mailing_service_response": "Успешно",
+      "client": 1,
+      "mailing": 3,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailinglog",
+    "pk": 2,
+    "fields": {
+      "last_attempt": "2023-08-30T10:52:04.069Z",
+      "status": "ok",
+      "mailing_service_response": "Успешно",
+      "client": 1,
+      "mailing": 1,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailinglog",
+    "pk": 5,
+    "fields": {
+      "last_attempt": "2023-08-30T11:44:50.670Z",
+      "status": "ok",
+      "mailing_service_response": "1",
+      "client": 5,
+      "mailing": 1,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailingclient",
+    "pk": 19,
+    "fields": {
+      "client": 1,
+      "mailing": 3,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailingclient",
+    "pk": 21,
+    "fields": {
+      "client": 1,
+      "mailing": 1,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailingclient",
+    "pk": 24,
+    "fields": {
+      "client": 1,
+      "mailing": 2,
+      "owner": null
+    }
+  },
+  {
+    "model": "mailing_list.mailingclient",
+    "pk": 28,
+    "fields": {
+      "client": 5,
+      "mailing": 1,
+      "owner": null
+    }
+  }
+]

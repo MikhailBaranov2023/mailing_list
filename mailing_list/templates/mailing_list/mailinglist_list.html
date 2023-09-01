@@ -1,46 +1,47 @@
-{% extends 'client/base.html' %}
+{% extends 'mailing_list/base.html' %}
 {% block content %}
     <div class="container">
         <div class="col-12 mb-5">
-            {% if perms.mailing_list.add_mailinglist %}
-                <a class='btn btn-outline-primary' href="{% url 'mailing_list:create' %}">Добавить рассылку</a>
-            {% endif %}
+            <a class='btn btn-outline-primary' href="{% url 'mailing_list:mailing_create' %}">Добавить рассылку</a>
         </div>
         <div class="row text-center">
             {% for object in object_list %}
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Дата рассылки : ({{ object.date }})</h4>
+                            <p class="my-0 font-weight-normal">Дата начала рассылки: ({{ object.start_time }})</p>
+                            <hr>
+                            <p class="my-0 font-weight-normal">Дата окончания рассылки: ({{ object.finish_time }})</p>
                         </div>
                         <div class="card-body">
                             <p>
-                                Статус рассылки :
-                                {% if object.status == 1 %}
-                                    завершена
-                                {% elif object.status == 2 %}
-                                    создана
-                                {% elif object.status == 3 %}
-                                    запушена
+                                Статус рассылки: {{ object.get_status_display }}
+                            </p>
+                            <p>
+                                Периодичность: {{ object.get_periodicity_display }}
+                            </p>
+                            <p>
+                                {% if perms.mailing_list.view_mailingclient %}
+                                    <a href="{% url 'mailing_list:mailing_client' object.pk %}">Подписчиков: {{ object.mailingclient_set.count }}</a>
+                                {% else %}
+                                    Подписчиков: {{ object.mailingclient_set.count }}
                                 {% endif %}
                             </p>
                             <p>
-                                Периодичность :
-                                {% if object.periodicity == 1 %}
-                                    раз в день
-                                {% elif object.periodicity == 2 %}
-                                    раз в неделю
-                                {% elif object.periodicity == 3 %}
-                                    раз в месяц
+                                {% if user.is_staff %}
+                                    <hr>
+                                    {{ object.owner }}
                                 {% endif %}
                             </p>
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between align-items-center">
-                                {% if user.is_superuser %}
-                                    <a href="{% url 'mailing_list:delete' object.pk %}" type="button"
+                                <div class="btn-group-toggle">
+                                    <a href="{% url 'mailing_list:mailing_edit' object.pk %}" type="button"
+                                       class="btn btn-sm btn-outline-primary">Edit</a>
+                                    <a href="{% url 'mailing_list:meiling_delete' object.pk %}" type="button"
                                        class="btn btn-sm btn-outline-danger">Delete</a>
-                                {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>

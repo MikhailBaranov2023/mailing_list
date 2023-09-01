@@ -1,4 +1,5 @@
 {% extends 'mailing_list/base.html' %}
+{% load my_tags %}
 {% block content %}
     <div class="col-12">
         <div class="row">
@@ -7,9 +8,12 @@
                     <div class="card-body">
                         <form method="post">
                             {% csrf_token %}
-                            <p>Хотите удалить рассылку "{{ object.date }}" ?</p>
+                            <p>Хотите удалить материал "{{ object.header }}" ?</p>
+                            <img class="card-img-top"
+                                     src="{{ object.image| mymedia }}"
+                                     alt="Card image cap">
                             <button type="submit" class="btn btn-danger">Подтвердить</button>
-                            <a href="{% url 'mailing_list:mailing_list' %}" class="btn btn-warning"> Отмена</a>
+                            <a href="{% url 'blog:list' %}" class= "btn btn-warning"> Отмена</a>
                         </form>
                     </div>
                 </div>

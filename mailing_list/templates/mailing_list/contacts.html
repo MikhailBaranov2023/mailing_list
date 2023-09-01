@@ -1,0 +1,37 @@
+{% extends 'mailing_list/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-5" style="margin-top:50px">
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Имя</label>
+                    <input name='name' type="text" class="form-control" id="exampleInputName"
+                           aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input name='email' type="text" class="form-control" id="autoSizingInputGroup">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Сообщение</label>
+                    <textarea name='message' class="form-control" id="message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col-1" style="margin-top:50px">
+</div>
+<div class="col-5" style="margin-top:50px" align="left">
+    <h5>Наши контакты</h5>
+    <p style="font-size:small">telegram: </p>
+    <p style="font-size:small">email: </p>
+</div>
+{% endblock %}
